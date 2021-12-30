@@ -1,0 +1,48 @@
+<nz-layout class="first" >
+ 
+  <nz-header >
+
+  </nz-header>
+  <nz-sider *ngIf="auth.isLoggedIn()" nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="sider">
+    <div class="logo"><img src="/assets/cahiertexte.gif" width="60px" height="60px" alt="cahier de texte"></div>
+    <ul nz-menu nzMode="inline" class="side-menu">
+      <li nz-menu-item>
+        <i nz-icon nzType="bar-chart"></i>
+        <a style="margin-left: 10px;" [routerLink]="['/parametrage']">Statistique</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="video-camera"></i>
+        <a style="margin-left: 10px;" [routerLink]="['/maquette']"  >maquette</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="upload"></i>
+        <a style="margin-left: 10px;" [routerLink]="['/parametrage']">Avancement</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="logout"></i>
+
+        <a style="margin-left: 10px;" [routerLink]="['/parametrage']">déconnexion</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="setting"></i>
+        <!--how to do some kind -->
+        <a style="margin-left: 10px;" [routerLink]="['/parametrage']">parametre maquette</a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout style="transform: translateY(80px)">
+  
+    <div  class="d-flex justify-content-center" >
+
+      <span > <img src="/assets/cahiertexte.gif" alt="" srcset="" id="img" /><span style="font-size: 20px;">Département <span style="background-color: #4e73df; color: white; border-radius: 10px;padding: 5px;">informatique</span></span></span>
+    </div>
+
+     
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer style="display: none;">Projet PFC Mohamed Ndoye && Elhadji Amath Sarr ©2021</nz-footer>
+  </nz-layout>
+</nz-layout>

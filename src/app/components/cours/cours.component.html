@@ -1,0 +1,188 @@
+<div class="container-fluid">
+    <div nz-row>
+
+        <div nz-col [nzLg]="{span: 24}" class="brand_welcome">
+            <!-- <div class="mt-0">
+
+                <div class="card-body">
+                    <span> <img src="/assets/cahiertexte.gif" alt="" srcset="" id="img" /></span>
+                    <br />
+                    <h4><span>Département</span></h4>
+                    <h5 class="filiere"><mark>informatique</mark></h5>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div nz-row nzJustify="center" class="form-builder">
+        <div nz-col nzXs="24" nzSm="24" nzMd="24">
+
+            <nz-card class="nzcard" style="margin: auto">
+                <div nz-row nzJustify="center">
+                        <p class="display">Création d'un nouvel module<i nz-icon nzType="edit" nzTheme="outline"
+                                id="editor"></i>
+                        </p>
+                </div>
+                <form class="nz-form">
+                <div nz-row class='myrowform' nzJustify="center">
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item"
+                                                [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+                        
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+                        
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+                        
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+                        
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div class="padd" nz-col nzXs="24" nzSm="12" nzMd="8">
+                            <nz-form-item>
+                                <nz-form-control>
+                                    <nz-input-group>
+                        
+                                        <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate"
+                                            nzPlaceHolder="custom dropdown render">
+                                            <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item">
+                                            </nz-option>
+                                        </nz-select>
+                                        <ng-template #renderTemplate>
+                                            <nz-divider></nz-divider>
+                                            <div class="container">
+                                                <input type="text" nz-input #inputElement />
+                                                <a class="add-item" (click)="addItem(inputElement)">
+                                                    <i nz-icon nzType="plus"></i>
+                                                    Add item
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </nz-input-group>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <div nz-row nzJustify="center" style="margin-top: 20px;">
+                        <div nz-col nzLg="8">
+
+                            <button nz-button nzType="primary" style="font-weight: 900;" class="button" >Créer</button>
+                        </div>
+
+                    </div>
+                </form>
+
+
+            </nz-card>
+        </div>
+
+    </div>
+
+</div>

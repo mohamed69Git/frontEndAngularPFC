@@ -1,0 +1,82 @@
+<div class="container">
+    <!--
+    <nz-table nzBordered class="mytable" [nzData]="maquette">
+        <thead>
+            <tr class="tr-row">
+                <th rowspan="2">
+                    <div>Semestre</div>
+                </th>
+                <th rowspan="2">
+                    <div>Unité d'enseignement</div>
+                </th>
+                <th colspan="2">
+                    <div>Elément constitutif</div>
+                </th>
+                <th colspan="2">
+                    <div>Modalité d'enseignements</div>
+                </th>
+             
+            </tr>
+            <tr class="tr-little">
+                <th>
+                    <div>sigle</div>
+                </th>
+                <th>
+                    <div>intitulé</div>
+                </th>
+                <th>
+                    <div>CM</div>
+                </th>
+                <th>
+                    <div>TD /TP</div>
+                </th>
+                <th>
+                    <div>Options</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>  -->
+            <!-- <tr>
+                <td  rowspan="maquette[0].unite_enseignement.length">Semestre {{maquette[0].numero}}</td>
+                <td >{{maquette[0].unite_enseignement[0].intitule +""+ maquette[0].unite_enseignement[0].code}}</td>
+                <td>{{maquette[0].unite_enseignement[0].element_constitutif[0].code}}</td>
+                <td>{{maquette[0].unite_enseignement[0].element_constitutif[0].intitule}}</td>
+                <td>{{maquette[0].unite_enseignement[0].element_constitutif[0].modalite.cm}}</td>
+                <td>{{maquette[0].unite_enseignement[0].element_constitutif[0].modalite.td_tp}}</td>
+            </tr> -->
+           <!-- <tr>
+                <td>Mathematique</td>
+                <td>INF 111</td>
+                <td>Analyse 1</td>
+                <td>20H</td>
+                <td>20H</td>
+            </tr> -->
+            <!--
+            <tr>
+                <td>Mathematique</td>
+                <td>INF 111</td>
+                <td>Analyse 1</td>
+                <td>20H</td>
+                <td>20H</td>
+            </tr> -->
+         
+            
+        <!-- </tbody>
+    </nz-table> -->
+    <nz-table>
+
+        <div *ngFor="let item of maquette">
+            <section style="background-color: red; width: 100px">Semestre {{item.numero}}</section>
+            <div style="margin-left: 20px;" *ngFor="let item2 of item.unite_enseignement">
+                {{item2.intitule}}
+                <div style="margin-left: 40px;" *ngFor="let item3 of item2.element_constitutif">
+                    {{item3.intitule+""+item3.code}}
+                    <div style="margin-left: 60px">
+                            {{item3.modalite.cm+""+item3.modalite.td_tp}}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nz-table>
+</div>

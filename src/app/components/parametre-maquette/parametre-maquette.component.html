@@ -1,0 +1,426 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+
+            <div nz-row class="my-5">
+                <div nz-col nzSpan="4" nzOffset="1">
+                    <button nz-button nzType="primary" nzShape="circle" nzBlock title="Ajouter un Semestre"
+                        style="width: 70px; height: 70px;" class="float-start" (click)="showModalSem()">
+                        <span><i nz-icon nzType="plus"
+                                style="transform: translateY(-3px);  font-weight: 900; font-size: 20px;"></i><span
+                                style="font-weight: 900; font-size: 10px">SE</span></span>
+                    </button>
+                </div>
+                <div nz-col nzSpan="4" nzOffset="2">
+                    <button nz-button nzType="primary" nzBlock nzShape="circle" title="Ajouter une unité d'enseignant"
+                        style="width: 70px; height: 70px;" class="float-start" (click)="showModalUe()">
+                        <span><i nz-icon nzType="plus"
+                                style="transform: translateY(-3px); font-weight: 900; font-size: 20px;"></i><span
+                                style="font-weight: 900; font-size: 10px">UE</span></span>
+                    </button>
+                </div>
+                <div nz-col nzSpan="4" nzOffset="2">
+                    <button nz-button nzType="primary" nzShape="circle" nzBlock title="Ajouter un élément constitutif"
+                        style="width: 70px; height: 70px;" class="float-start" (click)="showModalEc()">
+                        <span><i nz-icon nzType="plus"
+                                style="transform: translateY(-3px);   font-weight: 900; font-size: 20px;"></i><span
+                                style="font-weight: 900; font-size: 10px">EC</span></span>
+                    </button>
+                </div>
+                <div nz-col nzSpan="4" nzOffset="2">
+                    <button nz-button nzType="primary" nzShape="circle" nzBlock title="Ajouter une modalité"
+                        style="width: 70px; height: 70px;" class="float-start" (click)="showModalMe()">
+                        <span><i nz-icon nzType="plus"
+                                style="transform: translateY(-3px);  font-weight: 900; font-size: 20px;"></i><span
+                                style="font-weight: 900; font-size: 10px">ME</span></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <nz-modal [(nzVisible)]="isVisibleUe" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooterUe"
+        (nzOnCancel)="handleCancelUe()">
+        <ng-template #modalTitle>Ajout d'un UE</ng-template>
+
+        <ng-template #modalContent>
+            <p class="text-center">tous les champs sont obligatoires <span class="text-danger"
+                    style="font-size: 30px;">*</span></p>
+            <form [formGroup]="UniteEnseigneControl" class="nz-form">
+                <div nz-row class="myrowform">
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input formControlName="codeUe" nz-input
+                                        placeholder="Veuiller renseigner le code de l'UE" nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input formControlName="intituleUe" nz-input placeholder="Donner l'intitulé"
+                                        nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+
+                                    <nz-select nzShowSearch nzAllowClear name="semestreId" formControlName="semestreId"
+                                        nzPlaceHolder="Donner son semestre" [nzDropdownRender]="renderTemplateClasseUe">
+                                        <nz-option *ngFor="let item of sem" [nzLabel]="'Semestre ' + ' ' +item.numero"
+                                            [nzValue]="item.id">
+                                        </nz-option>
+                                    </nz-select>
+                                    <ng-template #renderTemplateClasseUe>
+                                        <nz-divider></nz-divider>
+                                        <div class="container">
+                                            <a class="add-item" (click)="showModalSem()">je n'ai pas trouvé le semestre,
+                                                créer</a>
+                                        </div>
+                                    </ng-template>
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+            </form>
+        </ng-template>
+
+        <ng-template #modalFooterUe>
+            <button nz-button nzType="default" (click)="handleCancelUe()">Annuler</button>
+            <button nz-button nzType="primary" (click)="handleOkUe()" [disabled]="!UniteEnseigneControl.valid"
+                [nzLoading]="isConfirmLoading">Valider</button>
+        </ng-template>
+    </nz-modal>
+    <nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitleEc" [nzContent]="modalContentEc" [nzFooter]="modalFooterEc"
+        (nzOnCancel)="handleCancelEc()">
+        <ng-template #modalTitleEc>Ajout d'un élément constitutif</ng-template>
+
+        <ng-template #modalContentEc>
+            <p class="text-center">tous les champs sont obligatoires <span class="text-danger"
+                    style="font-size: 30px;">*</span></p>
+            <form [formGroup]="ElemconsControl" class="nz-form">
+                <div nz-row class="myrowform">
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input type="text" formControlName="codeEc" nz-input
+                                        placeholder="Veuiller renseigner le code de EC" nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input type="text" formControlName="intituleEc" nz-input
+                                        placeholder="Donner l'intitulé" nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+
+                                    <nz-select nzShowSearch nzAllowClear name="classroom_id"
+                                        formControlName="unite_enseignements_id"
+                                        nzPlaceHolder="Donner son unité d'enseignement"
+                                        [nzDropdownRender]="renderTemplateClasse">
+                                        <nz-option *ngFor="let item of ue" [nzLabel]="item.code + ' ' +item.intitule"
+                                            [nzValue]="item.id">
+                                        </nz-option>
+                                    </nz-select>
+                                    <ng-template #renderTemplateClasse>
+                                        <nz-divider></nz-divider>
+                                        <div class="container">
+                                            <a class="add-item" (click)="showModalUe()">je n'ai pas trouvé l'UE,
+                                                créer</a>
+
+                                        </div>
+                                    </ng-template>
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+            </form>
+        </ng-template>
+
+        <ng-template #modalFooterEc>
+            <button nz-button nzType="default" (click)="handleCancel()">Annuler</button>
+            <button nz-button nzType="primary" (click)="handleOkEc()" [disabled]="!ElemconsControl.valid"
+                [nzLoading]="isConfirmLoading">Valider</button>
+        </ng-template>
+    </nz-modal>
+    <nz-modal [(nzVisible)]="isVisibleMe" [nzTitle]="modalTitleMe" [nzContent]="modalContentMe"
+        [nzFooter]="modalFooterMe" (nzOnCancel)="handleCancelMe()">
+        <ng-template #modalTitleMe>Ajout d'un modalité</ng-template>
+
+        <ng-template #modalContentMe>
+            <p class="text-center">tous les champs sont obligatoires <span class="text-danger"
+                    style="font-size: 30px;">*</span></p>
+            <form class="nz-form" [formGroup]="modaliteControl">
+                <div nz-row class="myrowform">
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input formControlName="tdtp" type="time" placeholder="Volume horaire CM" nz-input
+                                        nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input formControlName="cm" nz-input type="time" placeholder="Volume horaire Td/Tp"
+                                        nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+
+                                    <nz-select nzShowSearch nzAllowClear name="classroom_id"
+                                        nzPlaceHolder="Donner l'élément constitutif associé"
+                                        [nzDropdownRender]="renderTemplateClasseMe" formControlName="elem_const_id">
+                                        <nz-option *ngFor="let item of elem_cons"
+                                            [nzLabel]="item.code + ' ' +item.intitule" [nzValue]="item.id">
+                                        </nz-option>
+                                    </nz-select>
+                                    <ng-template #renderTemplateClasseMe>
+                                        <nz-divider></nz-divider>
+                                        <div class="container">
+                                            <a class="add-item" (click)="showModalEc()">je n'ai pas trouvé l'élément
+                                                constitutif, créer</a>
+
+                                        </div>
+                                    </ng-template>
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+
+                </div>
+            </form>
+        </ng-template>
+
+        <ng-template #modalFooterMe>
+            <button nz-button nzType="default" (click)="handleCancelMe()">Annuler</button>
+            <button nz-button nzType="primary" (click)="handleOkMe()" [disabled]="!modaliteControl.valid"
+                [nzLoading]="isConfirmLoading">Valider</button>
+        </ng-template>
+    </nz-modal>
+    <nz-modal [(nzVisible)]="isVisibleSem" [nzTitle]="modalTitleMe" [nzContent]="modalContentSem"
+        [nzFooter]="modalFooterSem" (nzOnCancel)="handleCancelSem()">
+        <ng-template #modalTitleMe>Ajout d'un semestre</ng-template>
+
+        <ng-template #modalContentSem>
+            <p class="text-center">tous les champs sont obligatoires <span class="text-danger"
+                    style="font-size: 30px;">*</span></p>
+            <form [formGroup]="semestreControl" class="nz-form">
+                <div nz-row class="myrowform">
+
+                    <div class="padd" nz-col nzXs="24" nzSm="24" nzMd="24">
+                        <nz-form-item>
+                            <nz-form-control>
+                                <nz-input-group>
+                                    <input formControlName="numero" type="number" min="0"
+                                        placeholder="Numéro du semestre" nz-input nzSize="large" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+
+        <ng-template #modalFooterSem>
+            <button nz-button nzType="default" (click)="handleCancelSem()">Annuler</button>
+            <button nz-button nzType="primary" (click)="handleOkSem()" [disabled]="!semestreControl.valid"
+                [nzLoading]="isConfirmLoading">Valider</button>
+        </ng-template>
+    </nz-modal>
+    <div class="container" style="transform: translateY(-20px)">
+        <div class="row my-5">
+            <div class="col-10 offset-1 d-flex justify-content-center">
+
+                <nz-tabset>
+                    <nz-tab nzTitle="Semestres">
+                        <div nz-row>
+                            <div nz-col nzSpan="24">
+
+                                <nz-card style="width:100%;" class="teacher" nzTitle="Semestres">
+                                    <h4>Semestres: <span
+                                            style="background-color: #4e73df; padding: 5px; border-radius: 50%;color: white;">{{sem.length}}</span>
+                                        <span class="float-end"><button nz-button nzType="primary"><i nz-icon
+                                                    nzType="plus"></i></button>
+                                        </span><span class="float-end" style="margin-right: 10px;"><button nz-button
+                                                nzDanger nzType="primary"><i nz-icon nzType="minus"></i></button></span>
+                                    </h4>
+                                    <nz-table [nzData]="sem">
+                                        <tbody>
+                                            <tr *ngFor="let data of sem">
+                                                <td>Semestre {{data.id}}</td>
+                                                <nz-divider nzType="horizontal"></nz-divider>
+                                            </tr>
+                                        </tbody>
+                                    </nz-table>
+
+                                </nz-card>
+                            </div>
+                        </div>
+                        <!-- <ng-template #extraTemplate>
+                            <button nz-button [nzType]="'primary'" (click)="showshowModal()"><span><i nz-icon
+                                        nzType="eye"></i></span></button>
+                            <nz-modal [(nzVisible)]="isshowVisible" nzTitle="Détail sur Mr Fofana" (nzOnCancel)="handleshowCancel()"
+                                (nzOnOk)="handleshowOk()">
+                                <ng-container *nzModalContent>
+                                    <p>Nom: Fofana</p>
+                                    <p>Prénom: Moussa</p>
+                                    <p>Statut: vacataire</p> 
+                                </ng-container>
+                            </nz-modal>
+                        </ng-template> -->
+
+
+
+                    </nz-tab>
+                    <nz-tab nzTitle="Unité d'enseignement">
+
+                        <div nz-row>
+                            <div nz-col nzSpan="24">
+
+                                <nz-card nzTitle="Unités d'enseignements">
+                                    <h4>Unités d'enseignements: <span
+                                            style="background-color: #4e73df; padding: 5px; border-radius: 50%;color: white;">
+                                            <div *ngIf="ue.length < 10; then thenBlock else elseBlock"></div>
+                                            <ng-template #thenBlock>0{{ue.length}}
+                                            </ng-template>
+                                            <ng-template #elseBlock>{{ue.length}}
+                                            </ng-template><span></span>
+                                        </span>
+                                    </h4>
+                                    <nz-table [nzData]="ue">
+                                        <thead>
+                                            <tr>
+                                                <th>Numéro</th>
+                                                <th>code</th>
+                                                <th>Intitulé</th>
+                                                <th>Semestre</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of ue">
+                                                <td> {{data.id}}</td>
+                                                <td>{{data.code}}</td>
+                                                <td>{{data.intitule}}</td>
+                                                <td>Semestre {{data.semestre}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </nz-table>
+
+                                </nz-card>
+                            </div>
+                        </div>
+                    </nz-tab>
+                    <nz-tab nzTitle="Éléments constitutifs">
+                        <div nz-row>
+                            <div nz-col nzSpan="24">
+
+                                <nz-card nzTitle="Éléments constitutifs">
+                                    <h4>Éléments constitutif
+                                        <span
+                                            style="background-color: #4e73df; border-radius: 50%; padding: 5px; color: white;">
+                                            <span *ngIf="elem_cons.length < 10">0{{elem_cons.length}}</span>
+                                            <span *ngIf="elem_cons.length >=10">{{elem_cons.length}}</span>
+                                        </span>
+                                    </h4>
+                                    <nz-table [nzData]="ue">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Numéro</th>
+                                                <th>code</th>
+                                                <th>Intitulé</th>
+                                                <th>UE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of elem_cons">
+                                                <td> demba</td>
+                                                <td>{{data.code}}</td>
+                                                <td>{{data.intitule}}</td>
+                                                <td>{{data.unite_enseignement_id}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </nz-table>
+
+                                </nz-card>
+                            </div>
+                        </div>
+
+                    </nz-tab>
+                    <nz-tab nzTitle="Modaliés d'enseignement">
+                        <div nz-row>
+                            <div nz-col nzSpan="24">
+
+                                <nz-card nzTitle="Modalités d'enseignement">
+                                    <h4>Modalités d'enseignement: <span
+                                            style="background-color: #4e73df; padding: 5px; border-radius: 50%;color: white;">
+                                            <div *ngIf="ue.length < 10; then thenBlock else elseBlock"></div>
+                                            <ng-template #thenBlock>0{{modalite.length}}
+                                            </ng-template>
+                                            <ng-template #elseBlock>{{modalite.length}}
+                                            </ng-template><span></span>
+                                        </span>
+                                    </h4>
+                                    <nz-table [nzData]="modalite">
+                                        <thead>
+                                            <tr>
+
+                                                <th>TD/TP(h)</th>
+                                                <th>CM(h)</th>
+                                                <th>EC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of modalite">
+                                                <td> {{data.tdtp}}</td>
+                                                <td>{{data.cm}}</td>
+                                                <td>{{data.code+"&nbsp;&nbsp;"+data.intituleEc}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </nz-table>
+
+                                </nz-card>
+                            </div>
+                        </div>
+
+                    </nz-tab>
+
+                </nz-tabset>
+            </div>
+        </div>
+    </div>
+</div>

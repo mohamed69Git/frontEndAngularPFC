@@ -1,0 +1,51 @@
+.nzcard{
+  max-width: 668px;
+  box-shadow: 0px 0px 30px rgba(128, 128, 128, .2);
+  max-height: 100%;
+  background-color: #0da3d9;
+  border-radius: 10px;
+  /* transform: translateY(-30px) */
+}
+
+.data:hover div i, .meta-data:hover div i, .meta-snd:hover div i{visibility: visible;}
+
+.meta-snd div{
+    background-color: #ddd;
+    font-weight: 700;
+    font-size: 1.2em;
+    border-radius: 10px;
+    color: black;
+}
+.data div{ 
+    background-color: #4e73df;
+    border-radius:10px;
+    font-weight: 700;
+   box-shadow: 0 0px 80px #ccc;
+   color: white;
+   
+    
+}
+.tr-row th div{
+    font-weight: bolder;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.tr-little th div{
+    font-size:1em;
+    text-align: center;
+}
+.icon-edit{
+visibility: hidden;
+font-size: 18px;
+    }
+
+.colonne::after{
+visibility: hidden;
+}
+ 
+.mytable{
+    box-shadow: 0 0px 80px #ccc;
+    border-radius:20px;
+
+} 
