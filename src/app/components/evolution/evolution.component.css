@@ -1,0 +1,14 @@
+  nz-progress {
+        transform: translate(5px, 9px);
+        float: right;
+      }
+
+.my-edit-icon{ transform: translate(5px, 14px);
+visibility: hidden;}
+.my-delete-icon{ transform: translate(20px, 14px);
+visibility: hidden;}
+
+.teacher:hover .my-edit-icon, .teacher:hover .my-delete-icon{ 
+    visibility: visible;
+
+}

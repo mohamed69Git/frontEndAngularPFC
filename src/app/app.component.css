@@ -1,80 +1,86 @@
-:host {
-  display: flex;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.first {
+        min-height: 120vh;
+        /* transform: translateY(-60px); */
+        /* background: #0da3d9; */
+      }
+
+.sider{
+  background: #4e73df;
+  /* transform: translate(5px, 65px); */
 }
 
-.app-layout {
-  height: 100vh;
+.side-menu{
+  margin-top: 37px;
+  background-color: #4e73df;
+  width: 100%;
 }
 
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0,21,41,.35);
-}
-
-.header-trigger {
-  height: 64px;
-  padding: 20px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all .3s,padding 0s;
-}
-
-.trigger:hover {
-  color: #1890ff;
-}
-
-.sidebar-logo {
-  position: relative;
-  height: 64px;
-  padding-left: 24px;
-  overflow: hidden;
-  line-height: 64px;
-  background: #001529;
-  transition: all .3s;
-}
-
-.sidebar-logo img {
-  display: inline-block;
-  height: 32px;
-  width: 32px;
-  vertical-align: middle;
-}
-
-.sidebar-logo h1 {
-  display: inline-block;
-  margin: 0 0 0 20px;
+.side-menu li a, .side-menu li i{
   color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
-  vertical-align: middle;
+  font-weight: bold;
 }
+.side-menu li:hover{ 
+  background-color: white;
+  color: #4e73df;
+}
+
+
+.side-menu li:hover i, .side-menu li:hover a{
+  color: #4e73df;
+  text-decoration: underline;
+}
+
+
+
+.logo {
+height: 65px;
+width: 65px;
+/* background: rgba(255, 255, 255, 0.2); */
+background: rgba(255, 255, 255);
+border-radius: 50%;
+  transform: translateY(30px);
+
+margin: auto;
+}
+
 
 nz-header {
-  padding: 0;
-  width: 100%;
-  z-index: 2;
-}
-
-.app-header {
-  position: relative;
-  height: 64px;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+background: #fff;
+padding: 0;
 }
 
 nz-content {
-  margin: 24px;
+/* margin: 24px 16px 0; */
 }
 
 .inner-content {
-  padding: 24px;
-  background: #fff;
-  height: 100%;
+/* padding: 24px; */
+background: #fff;
+min-height: 90vh;
+/* padding-bottom: 100px; */
+}
+
+nz-footer {
+text-align: center;
+}
+.card-body{ 
+ display: flex;
+ justify-content:center;
+}
+.card-body h4{ 
+  margin-top: 17px;
+  font-weight: bold;
+}
+#img {
+  margin: auto;
+  width:60px;
+  height:60px;
+  /* transform: translateY(-35px); */
+
+ 
+  /* animation-name: example;
+  animation-delay: 3s;
+  animation-direction: alternate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite; */
 }

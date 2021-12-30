@@ -1,0 +1,14 @@
+ .login-form {
+        max-width: 300px;
+      }
+
+
+@media only screen and (max-width: 793px){
+    .myImage{
+        display: none;
+    }
+}
+
+.cdt-text{ 
+    font-weight: 900;
+}

@@ -1,17 +1,22 @@
-import { Component, EventEmitter,Input, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './components/auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  isCollapsed = false;
-  onTouched(nom: string){
-    console.log('depense has been touched', nom)
+export class AppComponent implements OnInit {
+  user: any
+  isCollapsed = false
+  constructor(public auth: AuthService) { }
+
+  
+  ngOnInit() {
+
   }
 
-  post = {
-    isDepense: true
-  }
+
 }
